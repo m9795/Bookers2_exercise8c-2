@@ -7,5 +7,7 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
   resources :users, only: [:index,:show,:edit,:update]
-  resources :groups, only: [:new, :create, :show, :index, :edit, :update]
+  resources :groups, only: [:new, :create, :show, :index, :edit, :update, :destroy] do
+    get "join" => "groups#join"
+  end
 end
