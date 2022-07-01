@@ -6,14 +6,14 @@ class GroupsController < ApplicationController
   
   def join
     @group = Group.find(params[:group_id])
-    @group.users << current_user
+    group_users << current_user
     redirect_to groups_path
   end
 
   def create
     @group = Group.new(group_params)
     @group.owner_id = current_user.id
-    @group.users << current_user
+    group_users << current_user
     if  @group.save
       redirect_to groups_path
     else
